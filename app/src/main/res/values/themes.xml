@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
 
     <style name="MyThemeSplash" parent="MyBaseTheme">
-        <item name="nasaBackgroundColor">@color/white</item>
-        <item name="nasaPrimaryColor">@color/white</item>
-        <item name="nasaPrimaryDarkColor">@color/white</item>
+        <item name="gitBackgroundColor">@color/white</item>
+        <item name="gitPrimaryColor">@color/white</item>
+        <item name="gitPrimaryDarkColor">@color/white</item>
         <item name="swipeIndicatorActive">@color/white</item>
         <item name="swipeIndicatorPassive">@color/white</item>
         <item name="android:windowBackground">@drawable/splash_background</item>
@@ -12,9 +12,9 @@
 
 
     <style name="MyThemeOrange" parent="MyBaseTheme">
-        <item name="nasaBackgroundColor">@color/yellow_900</item>
-        <item name="nasaPrimaryColor">@color/yellow_50</item>
-        <item name="nasaPrimaryDarkColor">@color/black</item>
+        <item name="gitBackgroundColor">@color/yellow_900</item>
+        <item name="gitPrimaryColor">@color/yellow_50</item>
+        <item name="gitPrimaryDarkColor">@color/black</item>
         <item name="swipeIndicatorActive">@color/red</item>
         <item name="swipeIndicatorPassive">@color/orange</item>
         <item name="bottomAppBarStyle">@style/myBottomAppBarStyleBlackBlue</item>
@@ -22,10 +22,10 @@
     </style>
 
     <style name="MyThemeBlueGray" parent="MyBaseTheme">
-        <item name="nasaBackgroundColor">@color/blue_grey_900</item>
-        <item name="nasaPrimaryColor">@color/blue_grey_50</item>
+        <item name="gitBackgroundColor">@color/blue_grey_900</item>
+        <item name="gitPrimaryColor">@color/blue_grey_50</item>
         <item name="colorOnSurfaceVariant">@color/red</item>
-        <item name="nasaPrimaryDarkColor">@color/black</item>
+        <item name="gitPrimaryDarkColor">@color/black</item>
         <item name="swipeIndicatorActive">@color/blue_grey_900</item>
         <item name="swipeIndicatorPassive">@color/blue_grey_600</item>
         <item name="bottomAppBarStyle">@style/myBottomAppBarStyleBlackBlue</item>
@@ -33,9 +33,9 @@
     </style>
 
     <style name="MyThemeIndigo" parent="MyBaseTheme">
-        <item name="nasaBackgroundColor">@color/indigo_900</item>
-        <item name="nasaPrimaryColor">@color/indigo_50</item>
-        <item name="nasaPrimaryDarkColor">@color/black</item>
+        <item name="gitBackgroundColor">@color/indigo_900</item>
+        <item name="gitPrimaryColor">@color/indigo_50</item>
+        <item name="gitPrimaryDarkColor">@color/black</item>
         <item name="swipeIndicatorActive">@color/indigo_600</item>
         <item name="swipeIndicatorPassive">@color/indigo_900</item>
         <item name="bottomAppBarStyle">@style/myBottomAppBarStyleBlackBlue</item>
@@ -44,9 +44,9 @@
     </style>
 
     <style name="MyThemeGreen" parent="MyBaseTheme">
-        <item name="nasaBackgroundColor">@color/green_900</item>
-        <item name="nasaPrimaryColor">@color/green_50</item>
-        <item name="nasaPrimaryDarkColor">@color/black</item>
+        <item name="gitBackgroundColor">@color/green_900</item>
+        <item name="gitPrimaryColor">@color/green_50</item>
+        <item name="gitPrimaryDarkColor">@color/black</item>
         <item name="swipeIndicatorActive">@color/green_600</item>
         <item name="swipeIndicatorPassive">@color/green_900</item>
         <item name="bottomAppBarStyle">@style/myBottomAppBarStyleBlackGreen</item>
@@ -55,27 +55,27 @@
     </style>
 
     <style name="MyBaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="nasaBackgroundColor">@color/indigo_900</item>
-        <item name="nasaPrimaryColor">@color/indigo_50</item>
-        <item name="nasaPrimaryDarkColor">@color/black</item>
+        <item name="gitBackgroundColor">@color/indigo_900</item>
+        <item name="gitPrimaryColor">@color/indigo_50</item>
+        <item name="gitPrimaryDarkColor">@color/black</item>
         <item name="swipeIndicatorActive">@color/indigo_600</item>
         <item name="swipeIndicatorPassive">@color/indigo_900</item>
-        <item name="android:navigationBarColor">?attr/nasaBackgroundColor</item>
-        <item name="colorPrimary">?attr/nasaBackgroundColor</item>
-        <item name="colorOnPrimary">?attr/nasaPrimaryColor</item>
-        <item name="colorPrimaryContainer">?attr/nasaBackgroundColor</item>
-        <item name="colorOnPrimaryContainer">?attr/nasaBackgroundColor</item>
-        <item name="colorPrimaryInverse">?attr/nasaBackgroundColor</item>
-        <item name="colorSecondary">?attr/nasaBackgroundColor</item>
-        <item name="colorOnSecondary">?attr/nasaPrimaryColor</item>
+        <item name="android:navigationBarColor">?attr/gitBackgroundColor</item>
+        <item name="colorPrimary">?attr/gitBackgroundColor</item>
+        <item name="colorOnPrimary">?attr/gitPrimaryColor</item>
+        <item name="colorPrimaryContainer">?attr/gitBackgroundColor</item>
+        <item name="colorOnPrimaryContainer">?attr/gitBackgroundColor</item>
+        <item name="colorPrimaryInverse">?attr/gitBackgroundColor</item>
+        <item name="colorSecondary">?attr/gitBackgroundColor</item>
+        <item name="colorOnSecondary">?attr/gitPrimaryColor</item>
         <item name="colorOnSurfaceVariant">@color/red</item>
-        <item name="colorSecondaryContainer">?attr/nasaBackgroundColor</item>
-        <item name="colorOnSecondaryContainer">?attr/nasaBackgroundColor</item>
-        <item name="colorTertiary">?attr/nasaBackgroundColor</item>
-        <item name="colorOnTertiary">?attr/nasaPrimaryColor</item>
-        <item name="colorTertiaryContainer">?attr/nasaBackgroundColor</item>
-        <item name="colorOnTertiaryContainer">?attr/nasaBackgroundColor</item>
-        <item name="android:statusBarColor">?attr/nasaBackgroundColor</item>
+        <item name="colorSecondaryContainer">?attr/gitBackgroundColor</item>
+        <item name="colorOnSecondaryContainer">?attr/gitBackgroundColor</item>
+        <item name="colorTertiary">?attr/gitBackgroundColor</item>
+        <item name="colorOnTertiary">?attr/gitPrimaryColor</item>
+        <item name="colorTertiaryContainer">?attr/gitBackgroundColor</item>
+        <item name="colorOnTertiaryContainer">?attr/gitBackgroundColor</item>
+        <item name="android:statusBarColor">?attr/gitBackgroundColor</item>
         <item name="chipStyle">@style/myChipStyle</item>
         <item name="bottomAppBarStyle">@style/myBottomAppBarStyle</item>
         <item name="tabStyle">@style/myTabStyle</item>
