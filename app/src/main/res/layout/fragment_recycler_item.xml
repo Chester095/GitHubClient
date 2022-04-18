@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/earth_image_view"
+        android:id="@+id/user_image_view"
         android:layout_width="@dimen/earth_image_view_width"
         android:layout_height="@dimen/earth_image_view_height"
         android:layout_margin="@dimen/earth_image_view_margin"
@@ -22,9 +22,9 @@
         android:text="@string/login_text_view_text"
         android:textSize="@dimen/login_text_view_text_size"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/earth_image_view"
-        app:layout_constraintStart_toEndOf="@+id/earth_image_view"
-        app:layout_constraintTop_toTopOf="@+id/earth_image_view" />
+        app:layout_constraintBottom_toBottomOf="@+id/user_image_view"
+        app:layout_constraintStart_toEndOf="@+id/user_image_view"
+        app:layout_constraintTop_toTopOf="@+id/user_image_view" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/setup_image_view"
