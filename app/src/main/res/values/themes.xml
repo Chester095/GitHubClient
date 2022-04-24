@@ -84,4 +84,9 @@
         <item name="materialCardViewStyle">@style/myMaterialCardViewStyle</item>
         <item name="bottomNavigationStyle">@style/myBottomNavigationStyle</item>
     </style>
+
+    <style name="Theme_Dialog" parent="ThemeOverlay.AppCompat.Dialog">
+        <item name="windowMinWidthMajor">90pt</item>
+        <item name="windowMinWidthMinor">90pt</item>
+    </style>
 </resources>
