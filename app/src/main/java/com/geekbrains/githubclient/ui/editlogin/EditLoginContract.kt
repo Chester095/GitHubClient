@@ -4,9 +4,9 @@ import com.geekbrains.githubclient.ui.Contact
 
 interface EditLoginContract {
     interface View {
-        fun setSuccess()
+        fun setSuccess(contactId: Int)
         fun setError(error: String)
-        fun setTextView()
+        fun setTextView(contactLogin: String?)
     }
 
     interface Presenter {

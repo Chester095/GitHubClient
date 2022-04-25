@@ -7,10 +7,10 @@ import com.geekbrains.githubclient.R
 import com.geekbrains.githubclient.databinding.ActivityEditLoginBinding
 import com.geekbrains.githubclient.ui.Contact
 
-class EditLoginActivity(contact: Contact) : AppCompatActivity(), EditLoginContract.View {
+
+class EditLoginActivity() : AppCompatActivity(), EditLoginContract.View {
     private lateinit var binding: ActivityEditLoginBinding
     lateinit var presenter: EditLoginContract.Presenter
-    var contact = contact
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,25 +18,31 @@ class EditLoginActivity(contact: Contact) : AppCompatActivity(), EditLoginContra
         binding = ActivityEditLoginBinding.inflate(layoutInflater)
         presenter = EditLoginPresenter(this, applicationContext)
         setContentView(binding.root)
-        setTextView()
-        initSaveButton()
+
+        val intent = intent
+        val contactId = intent.getIntExtra("contactId", 0)
+        val contactLogin = intent.getStringExtra("contactLogin")
+
+
+        setTextView(contactLogin)
+        initSaveButton(contactId)
     }
 
-    private fun initSaveButton() {
+    private fun initSaveButton(contactId: Int) {
         binding.addLoginButton.setOnClickListener {
             if (binding.loginEditText.text.toString().isNotEmpty())
-                setSuccess()
+                setSuccess(contactId)
             else setError("Логин не может быть пустым")
         }
     }
 
-    override fun setTextView() {
-        binding.loginEditText.setText(contact.login)
+    override fun setTextView(contactLogin: String?) {
+        binding.loginEditText.setText(contactLogin)
     }
 
-    override fun setSuccess() {
+    override fun setSuccess(contactId: Int) {
         val contactIn = Contact(
-            contact.id,
+            contactId,
             binding.loginEditText.text.toString()
         )
         presenter.updateContact(contactIn)

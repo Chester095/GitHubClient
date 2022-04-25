@@ -37,7 +37,10 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun showEditLoginActivity(contact: Contact) {
-        startActivity(Intent(this, EditLoginActivity(contact)::class.java))
+        val intent = Intent(this, EditLoginActivity::class.java)
+        intent.putExtra("contactId", contact.id)
+        intent.putExtra("contactLogin", contact.login)
+        startActivity(intent)
     }
 
     override fun areYouSureAlertDialog(contact: Contact) {
