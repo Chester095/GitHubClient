@@ -14,7 +14,6 @@ interface AddLoginContract {
     interface Presenter {
         fun onSaveLogin(contact: Contact)
         fun onCancel()
-
         val itemCount: Int
     }
 }

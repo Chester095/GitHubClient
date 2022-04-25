@@ -1,20 +1,21 @@
-package com.geekbrains.githubclient.ui.addlogin
+package com.geekbrains.githubclient.ui.editlogin
 
 import android.content.Context
 import android.util.Log
 import com.geekbrains.githubclient.ui.Contact
 import com.geekbrains.githubclient.ui.DataHandler
 
-class AddLoginPresenter(_view: AddLoginContract.View, context: Context) : AddLoginContract.Presenter {
+class EditLoginPresenter(_view: EditLoginContract.View, context: Context) : EditLoginContract.Presenter {
 
     private var dataHandler = DataHandler(context)
 
-    override fun onSaveLogin(contact: Contact) {
-        dataHandler.insertContact(contact)
+
+    override fun updateContact(contact: Contact) {
+        dataHandler.updateContact(contact)
     }
 
     override fun onCancel() {
-        Log.d("!!!", "onCancel addLogin")
+        Log.d("!!!", "onCancel editLogin")
     }
 
 

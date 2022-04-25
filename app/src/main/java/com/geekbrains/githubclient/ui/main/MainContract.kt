@@ -7,7 +7,7 @@ interface MainContract {
     interface View {
         fun initViews(adapter: RecyclingAdapter)
         fun showInsertLoginActivity()
-        fun showOpenLoginActivity(contact: Contact)
+        fun showEditLoginActivity(contact: Contact)
         fun areYouSureAlertDialog(contact: Contact)
     }
 

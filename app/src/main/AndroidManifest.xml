@@ -20,7 +20,7 @@
         </activity>
 
         <activity
-            android:name=".ui.addlogin.AddLoginActivity"
+            android:name=".ui.editlogin.EditLoginActivity"
             android:exported="true" />
 
     </application>

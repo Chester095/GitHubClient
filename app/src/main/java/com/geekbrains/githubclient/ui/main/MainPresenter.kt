@@ -1,9 +1,12 @@
 package com.geekbrains.githubclient.ui.main
 
 import android.content.Context
+import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
 import com.geekbrains.githubclient.ui.Contact
 import com.geekbrains.githubclient.ui.DataHandler
 import com.geekbrains.githubclient.ui.RecyclingAdapter
+import com.geekbrains.githubclient.ui.editlogin.EditLoginActivity
 
 class MainPresenter(_view: MainContract.View, context: Context) : MainContract.Presenter {
 
@@ -43,7 +46,7 @@ class MainPresenter(_view: MainContract.View, context: Context) : MainContract.P
         get() = dataHandler.getAllContacts().size
 
     override fun onEditClicked(contact: Contact) {
-        view.showOpenLoginActivity(contact)
+        view.showEditLoginActivity(contact)
     }
 
     override fun onDeleteClicked(contact: Contact) {
