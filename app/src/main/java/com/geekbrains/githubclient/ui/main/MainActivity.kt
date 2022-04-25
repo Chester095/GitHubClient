@@ -8,9 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.githubclient.R
 import com.geekbrains.githubclient.databinding.ActivityMainBinding
-import com.geekbrains.githubclient.ui.*
+import com.geekbrains.githubclient.domain.Contact
 import com.geekbrains.githubclient.ui.addlogin.AddLoginActivity
 import com.geekbrains.githubclient.ui.editlogin.EditLoginActivity
+import com.geekbrains.githubclient.ui.login.LoginActivity
 
 class MainActivity : AppCompatActivity(), MainContract.View {
     private lateinit var binding: ActivityMainBinding
@@ -38,6 +39,13 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     override fun showEditLoginActivity(contact: Contact) {
         val intent = Intent(this, EditLoginActivity::class.java)
+        intent.putExtra("contactId", contact.id)
+        intent.putExtra("contactLogin", contact.login)
+        startActivity(intent)
+    }
+
+    override fun showLoginActivity(contact: Contact) {
+        val intent = Intent(this, LoginActivity::class.java)
         intent.putExtra("contactId", contact.id)
         intent.putExtra("contactLogin", contact.login)
         startActivity(intent)

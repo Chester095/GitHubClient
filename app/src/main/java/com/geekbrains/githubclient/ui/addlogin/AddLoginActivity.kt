@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.geekbrains.githubclient.R
 import com.geekbrains.githubclient.databinding.ActivityAddLoginBinding
-import com.geekbrains.githubclient.ui.Contact
+import com.geekbrains.githubclient.domain.Contact
 
 class AddLoginActivity() : AppCompatActivity(), AddLoginContract.View {
     private lateinit var binding: ActivityAddLoginBinding

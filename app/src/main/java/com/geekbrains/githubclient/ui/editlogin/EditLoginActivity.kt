@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.geekbrains.githubclient.R
 import com.geekbrains.githubclient.databinding.ActivityEditLoginBinding
-import com.geekbrains.githubclient.ui.Contact
+import com.geekbrains.githubclient.domain.Contact
 
 
 class EditLoginActivity() : AppCompatActivity(), EditLoginContract.View {
@@ -22,7 +22,6 @@ class EditLoginActivity() : AppCompatActivity(), EditLoginContract.View {
         val intent = intent
         val contactId = intent.getIntExtra("contactId", 0)
         val contactLogin = intent.getStringExtra("contactLogin")
-
 
         setTextView(contactLogin)
         initSaveButton(contactId)

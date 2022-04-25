@@ -2,8 +2,8 @@ package com.geekbrains.githubclient.ui.addlogin
 
 import android.content.Context
 import android.util.Log
-import com.geekbrains.githubclient.ui.Contact
-import com.geekbrains.githubclient.ui.DataHandler
+import com.geekbrains.githubclient.domain.Contact
+import com.geekbrains.githubclient.data.DataHandler
 
 class AddLoginPresenter(_view: AddLoginContract.View, context: Context) : AddLoginContract.Presenter {
 

@@ -1,13 +1,13 @@
 package com.geekbrains.githubclient.ui.main
 
-import com.geekbrains.githubclient.ui.Contact
-import com.geekbrains.githubclient.ui.RecyclingAdapter
+import com.geekbrains.githubclient.domain.Contact
 
 interface MainContract {
     interface View {
         fun initViews(adapter: RecyclingAdapter)
         fun showInsertLoginActivity()
         fun showEditLoginActivity(contact: Contact)
+        fun showLoginActivity(contact: Contact)
         fun areYouSureAlertDialog(contact: Contact)
     }
 
@@ -25,6 +25,7 @@ interface MainContract {
         val itemCount: Int
         fun onEditClicked(contact: Contact)
         fun onDeleteClicked(contact: Contact)
+        fun onItemClicked(contact: Contact)
         fun onBindItemView(itemView: RecyclingAdapter.MyViewHolder, pos: Int)
     }
 }

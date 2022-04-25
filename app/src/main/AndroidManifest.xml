@@ -18,9 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.editlogin.EditLoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.addlogin.AddLoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.login.LoginActivity"
             android:exported="true" />
 
     </application>

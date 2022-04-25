@@ -1,6 +1,6 @@
 package com.geekbrains.githubclient.ui.editlogin
 
-import com.geekbrains.githubclient.ui.Contact
+import com.geekbrains.githubclient.domain.Contact
 
 interface EditLoginContract {
     interface View {

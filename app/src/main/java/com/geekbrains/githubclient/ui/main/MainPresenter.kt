@@ -1,12 +1,8 @@
 package com.geekbrains.githubclient.ui.main
 
 import android.content.Context
-import android.content.Intent
-import androidx.core.content.ContextCompat.startActivity
-import com.geekbrains.githubclient.ui.Contact
-import com.geekbrains.githubclient.ui.DataHandler
-import com.geekbrains.githubclient.ui.RecyclingAdapter
-import com.geekbrains.githubclient.ui.editlogin.EditLoginActivity
+import com.geekbrains.githubclient.domain.Contact
+import com.geekbrains.githubclient.data.DataHandler
 
 class MainPresenter(_view: MainContract.View, context: Context) : MainContract.Presenter {
 
@@ -51,6 +47,10 @@ class MainPresenter(_view: MainContract.View, context: Context) : MainContract.P
 
     override fun onDeleteClicked(contact: Contact) {
         view.areYouSureAlertDialog(contact)
+    }
+
+    override fun onItemClicked(contact: Contact) {
+        view.showLoginActivity(contact)
     }
 
     override fun onBindItemView(itemView: RecyclingAdapter.MyViewHolder, pos: Int) {

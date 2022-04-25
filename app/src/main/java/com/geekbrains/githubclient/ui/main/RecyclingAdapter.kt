@@ -1,4 +1,4 @@
-package com.geekbrains.githubclient.ui
+package com.geekbrains.githubclient.ui.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.githubclient.R
-import com.geekbrains.githubclient.ui.main.MainContract
+import com.geekbrains.githubclient.domain.Contact
 
 class RecyclingAdapter(private val presenter: MainContract.Presenter) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -29,6 +29,10 @@ class RecyclingAdapter(private val presenter: MainContract.Presenter) :
             imageViewDelete.setOnClickListener {
                 presenter.onDeleteClicked(currentContact)
             }
+            itemView.setOnClickListener {
+                presenter.onItemClicked(currentContact)
+            }
+
         }
 
         override fun bindItem(contact: Contact) {
