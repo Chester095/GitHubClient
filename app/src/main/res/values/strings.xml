@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">GitHubClient</string>
+    <string name="login_text_view_text">Логин</string>
+    <string name="insert_login">Введите логин</string>
+    <string name="edit_login">Измените логин</string>
+    <string name="login_edit_text">Логин</string>
+    <string name="add_account_button_text">Добавить</string>
+    <string name="save_account_button_text">Сохранить</string>
 </resources>

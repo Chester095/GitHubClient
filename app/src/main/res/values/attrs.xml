@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="gitBackgroundColor" format="color"/>
+    <attr name="gitPrimaryColor" format="color"/>
+    <attr name="gitPrimaryDarkColor" format="color"/>
+    <attr name="colorOnSurface" format="color"/>
+    <attr name="swipeIndicatorActive" format="color"/>
+    <attr name="swipeIndicatorPassive" format="color"/>
+
+
+</resources>
