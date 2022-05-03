@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.githubclient.R
 import com.geekbrains.githubclient.domain.Contact
 
-class RecyclingAdapter(private val presenter: MainContract.Presenter) :
+class MainRecyclingAdapter(private val presenter: MainContract.Presenter) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class MyViewHolder(itemView: View) :

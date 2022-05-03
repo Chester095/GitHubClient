@@ -2,31 +2,31 @@ package com.geekbrains.githubclient.ui.main
 
 import android.content.Context
 import com.geekbrains.githubclient.domain.Contact
-import com.geekbrains.githubclient.data.DataHandler
+import com.geekbrains.githubclient.data.DataHandlerLogin
 
 class MainPresenter(_view: MainContract.View, context: Context) : MainContract.Presenter {
 
     private var view: MainContract.View = _view
-    private var dataHandler = DataHandler(context)
-    private var adapter: RecyclingAdapter = RecyclingAdapter(this)
+    private var dataHandler = DataHandlerLogin(context)
+    private var adapterMain: MainRecyclingAdapter = MainRecyclingAdapter(this)
 
     init {
-        view.initViews(adapter)
+        view.initViews(adapterMain)
     }
 
     override fun insertLogin(contact: Contact) {
         dataHandler.insertContact(contact)
-        adapter.reLoad()
+        adapterMain.reLoad()
     }
 
     override fun updateContact(contact: Contact) {
         dataHandler.updateContact(contact)
-        adapter.reLoad()
+        adapterMain.reLoad()
     }
 
     override fun deleteContact(contact: Contact) {
         dataHandler.deleteContact(contact)
-        adapter.reLoad()
+        adapterMain.reLoad()
     }
 
     override fun getAllContacts(): List<Contact> {
@@ -53,7 +53,7 @@ class MainPresenter(_view: MainContract.View, context: Context) : MainContract.P
         view.showLoginActivity(contact)
     }
 
-    override fun onBindItemView(itemView: RecyclingAdapter.MyViewHolder, pos: Int) {
+    override fun onBindItemView(itemView: MainRecyclingAdapter.MyViewHolder, pos: Int) {
         itemView.bindItem(getAllContacts()[pos])
     }
 

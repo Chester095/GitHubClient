@@ -28,6 +28,10 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         binding.headerLoginTextView.text = contactLogin
     }
 
+    override fun initViews(adapterLogin: LoginRecyclingAdapter) {
+        TODO("Not yet implemented")
+    }
+
 
     override fun setSuccess() {
         Toast.makeText(

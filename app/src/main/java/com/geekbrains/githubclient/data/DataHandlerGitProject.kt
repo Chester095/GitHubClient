@@ -6,8 +6,9 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.geekbrains.githubclient.domain.Contact
+import com.geekbrains.githubclient.domain.GitProjects
 
-class DataHandler(context: Context) :
+class DataHandlerGitProject(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
@@ -47,9 +48,9 @@ class DataHandler(context: Context) :
     }
 
     // Reading all contacts from a database
-    fun getAllContacts(): List<Contact> {
+    fun getAllGitProjects(): List<GitProjects> {
         val db: SQLiteDatabase = readableDatabase
-        val contactList = ArrayList<Contact>()
+        val contactList = ArrayList<GitProjects>()
 
         val selectAll = "SELECT * FROM $TABLE_NAME"
         val cursor: Cursor = db.rawQuery(selectAll, null)
@@ -57,11 +58,11 @@ class DataHandler(context: Context) :
         if (cursor.moveToFirst()) {
             do {
 
-                val contact = Contact(
+                val gitProject = GitProjects(
                     id = cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID)),
                     login = cursor.getString(cursor.getColumnIndexOrThrow(KEY_NAME))
                 )
-                contactList.add(contact)
+                contactList.add(gitProject)
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -82,17 +83,5 @@ class DataHandler(context: Context) :
         return result
     }
 
-    // Delete a contact
-    fun deleteContact(contact: Contact): Int {
-        val db = this.writableDatabase
-        val contentValues = ContentValues()
-        contentValues.put(KEY_ID, contact.id)
-
-        // deleting row
-        val result = db.delete(TABLE_NAME, "$KEY_ID = ${contact.id}", null)
-
-        db.close()
-        return result
-    }
 
 }

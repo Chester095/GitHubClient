@@ -4,7 +4,7 @@ import com.geekbrains.githubclient.domain.Contact
 
 interface MainContract {
     interface View {
-        fun initViews(adapter: RecyclingAdapter)
+        fun initViews(adapterMain: MainRecyclingAdapter)
         fun showInsertLoginActivity()
         fun showEditLoginActivity(contact: Contact)
         fun showLoginActivity(contact: Contact)
@@ -26,6 +26,6 @@ interface MainContract {
         fun onEditClicked(contact: Contact)
         fun onDeleteClicked(contact: Contact)
         fun onItemClicked(contact: Contact)
-        fun onBindItemView(itemView: RecyclingAdapter.MyViewHolder, pos: Int)
+        fun onBindItemView(itemView: MainRecyclingAdapter.MyViewHolder, pos: Int)
     }
 }
