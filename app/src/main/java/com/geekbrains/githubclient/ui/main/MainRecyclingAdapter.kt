@@ -12,7 +12,7 @@ import com.geekbrains.githubclient.domain.Contact
 class MainRecyclingAdapter(private val presenter: MainContract.Presenter) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    inner class MyViewHolder(itemView: View) :
+    inner class LoginViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView),
         MainContract.ItemView {
 
@@ -44,11 +44,11 @@ class MainRecyclingAdapter(private val presenter: MainContract.Presenter) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val itemBinding = LayoutInflater.from(parent.context).inflate(R.layout.item_login, parent, false)
-        return MyViewHolder(itemBinding)
+        return LoginViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is MyViewHolder) {
+        if (holder is LoginViewHolder) {
             presenter.onBindItemView(holder, position)
         }
     }

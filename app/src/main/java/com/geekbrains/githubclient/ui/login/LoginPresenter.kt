@@ -25,7 +25,7 @@ class LoginPresenter(_view: LoginContract.View, context: Context) : LoginContrac
         return dataHandler.getAllGitProjects()
     }
 
-    override fun onBindItemView(itemView: LoginRecyclingAdapter.MyViewHolder, pos: Int) {
+    override fun onBindItemView(itemView: LoginRecyclingAdapter.GitProjectsViewHolder, pos: Int) {
         itemView.bindItem(getAllGitProjects()[pos])
     }
 

@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun initViews(adapterMain: MainRecyclingAdapter) {
-        binding.recyclerView.adapter = adapterMain
+        binding.loginRecyclerView.adapter = adapterMain
     }
 
     override fun showInsertLoginActivity() {

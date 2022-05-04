@@ -53,7 +53,7 @@ class MainPresenter(_view: MainContract.View, context: Context) : MainContract.P
         view.showLoginActivity(contact)
     }
 
-    override fun onBindItemView(itemView: MainRecyclingAdapter.MyViewHolder, pos: Int) {
+    override fun onBindItemView(itemView: MainRecyclingAdapter.LoginViewHolder, pos: Int) {
         itemView.bindItem(getAllContacts()[pos])
     }
 

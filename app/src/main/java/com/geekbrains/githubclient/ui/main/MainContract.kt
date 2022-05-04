@@ -26,6 +26,6 @@ interface MainContract {
         fun onEditClicked(contact: Contact)
         fun onDeleteClicked(contact: Contact)
         fun onItemClicked(contact: Contact)
-        fun onBindItemView(itemView: MainRecyclingAdapter.MyViewHolder, pos: Int)
+        fun onBindItemView(itemView: MainRecyclingAdapter.LoginViewHolder, pos: Int)
     }
 }

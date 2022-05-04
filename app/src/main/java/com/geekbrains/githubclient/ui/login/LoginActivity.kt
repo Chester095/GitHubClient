@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun initViews(adapterLogin: LoginRecyclingAdapter) {
-        TODO("Not yet implemented")
+        binding.gitProjectsRecyclerView.adapter = adapterLogin
     }
 
 

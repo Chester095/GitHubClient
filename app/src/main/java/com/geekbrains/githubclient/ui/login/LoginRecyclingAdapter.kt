@@ -12,14 +12,12 @@ import com.geekbrains.githubclient.domain.GitProjects
 class LoginRecyclingAdapter(private val presenter: LoginContract.Presenter) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    inner class MyViewHolder(itemView: View) :
+    inner class GitProjectsViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView),
         LoginContract.ItemView {
 
-        private val loginTextView = itemView.findViewById<TextView>(R.id.login_text_view)
+        private val loginTextView = itemView.findViewById<TextView>(R.id.item_git_repo_name)
 
-        private val imageViewEdit = itemView.findViewById<ImageView>(R.id.image_view_edit)
-        private val imageViewDelete = itemView.findViewById<ImageView>(R.id.image_view_delete)
 
         private lateinit var currentGitProject: GitProjects
 
@@ -33,11 +31,11 @@ class LoginRecyclingAdapter(private val presenter: LoginContract.Presenter) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val itemBinding = LayoutInflater.from(parent.context).inflate(R.layout.item_git_projects, parent, false)
-        return MyViewHolder(itemBinding)
+        return GitProjectsViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is MyViewHolder) {
+        if (holder is GitProjectsViewHolder) {
             presenter.onBindItemView(holder, position)
         }
     }

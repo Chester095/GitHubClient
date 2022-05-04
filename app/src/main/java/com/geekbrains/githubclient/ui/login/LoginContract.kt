@@ -17,7 +17,7 @@ interface LoginContract {
     interface Presenter {
         val itemCount: Int
         fun onOpenLogin(gitProject: GitProjects)
-        fun onBindItemView(itemView: LoginRecyclingAdapter.MyViewHolder, pos: Int)
+        fun onBindItemView(itemView: LoginRecyclingAdapter.GitProjectsViewHolder, pos: Int)
         fun getAllGitProjects(): List<GitProjects>
     }
 }
