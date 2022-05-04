@@ -1,6 +1,6 @@
 package com.geekbrains.githubclient.domain
 
-data class GitProjects(
+data class GitProjectEntity(
     val id: Int = 0,
-    val login: String,
+    val name: String,
 )

@@ -6,5 +6,5 @@ import io.reactivex.rxjava3.core.Single
 interface ProjectsRepo {
     // C(R)UD
     // получать данные по имени пользователя
-    fun observeReposForUser(username: String): Single<List<Contact>>
+    fun observeReposForUser(username: String): Single<List<GitProjectEntity>>
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.geekbrains.githubclient.R
+import com.geekbrains.githubclient.app
 import com.geekbrains.githubclient.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
@@ -14,7 +15,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         super.onCreate(savedInstanceState)
         setTheme(R.style.MyThemeGreen)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        presenter = LoginPresenter(this, applicationContext)
+        presenter = LoginPresenter(this, app.gitProjectsRepo)
         setContentView(binding.root)
 
         val intent = intent

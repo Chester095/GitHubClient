@@ -1,6 +1,6 @@
 package com.geekbrains.githubclient.ui.login
 
-import com.geekbrains.githubclient.domain.GitProjects
+import com.geekbrains.githubclient.domain.GitProjectEntity
 
 interface LoginContract {
     interface View {
@@ -11,13 +11,12 @@ interface LoginContract {
     }
 
     interface ItemView {
-        fun bindItem(gitProject: GitProjects)
+        fun bindItem(gitProject: GitProjectEntity)
     }
 
     interface Presenter {
-        val itemCount: Int
-        fun onOpenLogin(gitProject: GitProjects)
-        fun onBindItemView(itemView: LoginRecyclingAdapter.GitProjectsViewHolder, pos: Int)
-        fun getAllGitProjects(): List<GitProjects>
+        fun onOpenLogin(gitProject: GitProjectEntity)
+        fun onBindItemView(itemView: LoginRecyclingAdapter.Git, pos: Int)
+//        fun getAllGitProjects(): List<GitProjects>
     }
 }
