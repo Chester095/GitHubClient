@@ -10,7 +10,7 @@ import io.reactivex.rxjava3.kotlin.subscribeBy
 class LoginPresenter(_view: LoginContract.View, private val gitProjectRepo: ProjectsRepo) : LoginContract.Presenter {
 
     private var view: LoginContract.View = _view
-    private var adapterLogin: LoginRecyclingAdapter = LoginRecyclingAdapter(this)
+    private var adapterLogin = LoginRecyclingAdapter()
 
     private val _repos = MutableLiveData<List<GitProjectEntity>>()
     val repos: LiveData<List<GitProjectEntity>> = _repos
@@ -20,11 +20,11 @@ class LoginPresenter(_view: LoginContract.View, private val gitProjectRepo: Proj
         view.initViews(adapterLogin)
     }
 
-    override fun onOpenLogin(login: GitProjectEntity) {
+    override fun onOpenLogin(gitProject: GitProjectEntity) {
             // подписываемся, получаем результат и отправляем
             compositeDisposable.add(
                 gitProjectRepo
-                    .observeReposForUser(login.id.toString())
+                    .observeReposForUser(gitProject.id.toString())
                     // подписались
                     .subscribeBy {
                         // пихаем в repos данные (список)
@@ -33,10 +33,6 @@ class LoginPresenter(_view: LoginContract.View, private val gitProjectRepo: Proj
                     }
             )
 
-    }
-
-    override fun onBindItemView(itemView: LoginRecyclingAdapter.GitProjectsViewHolder, pos: Int) {
-        itemView.bindItem(getAllGitProjects()[pos])
     }
 
 }

@@ -1,6 +1,6 @@
 package com.geekbrains.githubclient.data.retrofit
 
-import com.geekbrains.githubclient.domain.Contact
+import com.geekbrains.githubclient.domain.GitProjectEntity
 import com.geekbrains.githubclient.domain.ProjectsRepo
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Retrofit
@@ -19,7 +19,7 @@ class RetrofitProjectsRepoImpl : ProjectsRepo {
 
     private val api: GitHubApi = retrofit.create(GitHubApi::class.java)
 
-    override fun observeReposForUser(username: String): Single<List<Contact>> {
+    override fun observeReposForUser(username: String): Single<List<GitProjectEntity>> {
         return api.listRepos(username)
     }
 

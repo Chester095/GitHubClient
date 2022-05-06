@@ -10,13 +10,7 @@ interface LoginContract {
         fun setTextView(contactLogin: String?)
     }
 
-    interface ItemView {
-        fun bindItem(gitProject: GitProjectEntity)
-    }
-
     interface Presenter {
         fun onOpenLogin(gitProject: GitProjectEntity)
-        fun onBindItemView(itemView: LoginRecyclingAdapter.Git, pos: Int)
-//        fun getAllGitProjects(): List<GitProjects>
     }
 }
