@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="3dp"
+    android:layout_margin="@dimen/constraint_layout_margin"
     tools:context=".ui.login.LoginActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -30,17 +29,31 @@
         app:layout_constraintStart_toEndOf="@+id/user_image_view"
         app:layout_constraintTop_toTopOf="@+id/user_image_view" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gitProjectsRecyclerView"
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/header_insert_login_text_view_margin_top"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_image_view"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/earth_image_view_height">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/gitProjectsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/earth_image_view_margin"/>
+
+        <FrameLayout
+            android:id="@+id/progress_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#99ffffff"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+        </FrameLayout>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

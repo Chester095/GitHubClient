@@ -25,7 +25,7 @@ class LoginRecyclingAdapter :  RecyclerView.Adapter<GitProjectVh>()  {
     }
 
     // получаем отдельный элемент
-    public fun getItem(pos: Int): GitProjectEntity = data[pos]
+    private fun getItem(pos: Int): GitProjectEntity = data[pos]
 
     // получаем размер элемента (списка)
     override fun getItemCount(): Int = data.size

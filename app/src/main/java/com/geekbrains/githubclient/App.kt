@@ -6,8 +6,6 @@ import com.geekbrains.githubclient.data.retrofit.RetrofitProjectsRepoImpl
 import com.geekbrains.githubclient.domain.ProjectsRepo
 
 class App : Application() {
-    // для проверки можно использовать временный класс MockProjectsRepoImpl
-    // вместо RetrofitProjectsRepoImpl
     val gitProjectsRepo: ProjectsRepo by lazy { RetrofitProjectsRepoImpl() }
 }
 
