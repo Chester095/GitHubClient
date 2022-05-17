@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
     }
 
-    override fun initViews(adapter: RecyclingAdapter) {
-        binding.recyclerView.adapter = adapter
+    override fun initViews(adapterMain: MainRecyclingAdapter) {
+        binding.loginRecyclerView.adapter = adapterMain
     }
 
     override fun showInsertLoginActivity() {

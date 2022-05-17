@@ -1,44 +1,75 @@
 package com.geekbrains.githubclient.ui.login
 
 import android.os.Bundle
-import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.geekbrains.githubclient.R
+import com.geekbrains.githubclient.app
 import com.geekbrains.githubclient.databinding.ActivityLoginBinding
 
-class LoginActivity : AppCompatActivity(), LoginContract.View {
+class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    lateinit var presenter: LoginContract.Presenter
+
+    // подключаем гугловский вьюмодель
+    private val viewModel: ReposViewModel by viewModels { ReposViewModelFactory(app.gitProjectsRepo) }
+    private val adapter = LoginRecyclingAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.MyThemeGreen)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        presenter = LoginPresenter(this, applicationContext)
         setContentView(binding.root)
 
+        getIntentContact()
+        initViews()
+
+
+    }
+
+    private fun getIntentContact() {
         val intent = intent
         val contactId = intent.getIntExtra("contactId", 0)
         val contactLogin = intent.getStringExtra("contactLogin")
+        contactLogin?.let {
+            setTextView(it)
+            initOutgoingEvents(it)
+        }
+        initIncomingEvents()
 
-        setTextView(contactLogin)
     }
 
-    override fun setTextView(contactLogin: String?) {
+    private fun setTextView(contactLogin: String?) {
         binding.headerLoginTextView.text = contactLogin
     }
 
 
-    override fun setSuccess() {
-        Toast.makeText(
-            applicationContext, "Данные загрузились", Toast.LENGTH_SHORT
-        ).show()
+    private fun initViews() {
+        binding.gitProjectsRecyclerView.layoutManager = LinearLayoutManager(this)
+        // приложение само начнёт считать
+        adapter.setHasStableIds(true)
+        binding.gitProjectsRecyclerView.adapter = adapter
     }
 
-    override fun setError(error: String) {
-        Toast.makeText(
-            applicationContext, error, Toast.LENGTH_SHORT
-        ).show()
+
+    private fun initOutgoingEvents(contactLogin: String) {
+        // передаём в onShowRepos contactLogin
+        viewModel.onShowRepos(contactLogin)
+
+    }
+
+    private fun initIncomingEvents() {
+        // подписываемся на вьюмодель
+        viewModel.repos.observe(this) {
+            // передаём в адаптер те данные, которые пришли
+            // обновляем каждый раз адаптер, когда к нам приходят новые данные
+            adapter.setData(it)
+        }
+        // подписываемся на состояние загрузки
+        viewModel.inProgress.observe(this) { inProgress ->
+            binding.progressBarLayout.isVisible = inProgress
+        }
     }
 
 }

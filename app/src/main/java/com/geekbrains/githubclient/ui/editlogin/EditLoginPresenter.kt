@@ -3,11 +3,11 @@ package com.geekbrains.githubclient.ui.editlogin
 import android.content.Context
 import android.util.Log
 import com.geekbrains.githubclient.domain.Contact
-import com.geekbrains.githubclient.data.DataHandler
+import com.geekbrains.githubclient.data.DataHandlerLogin
 
 class EditLoginPresenter(_view: EditLoginContract.View, context: Context) : EditLoginContract.Presenter {
 
-    private var dataHandler = DataHandler(context)
+    private var dataHandler = DataHandlerLogin(context)
 
 
     override fun updateContact(contact: Contact) {
