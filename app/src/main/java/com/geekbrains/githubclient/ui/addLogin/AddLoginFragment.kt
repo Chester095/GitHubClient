@@ -7,7 +7,7 @@ import com.geekbrains.githubclient.R
 import com.geekbrains.githubclient.databinding.ActivityAddLoginBinding
 import com.geekbrains.githubclient.domain.Contact
 
-class AddLoginActivity() : AppCompatActivity(), AddLoginContract.View {
+class AddLoginFragment() : AppCompatActivity(), AddLoginContract.View {
     private lateinit var binding: ActivityAddLoginBinding
     lateinit var presenter: AddLoginContract.Presenter
 

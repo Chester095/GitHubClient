@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/constraint_layout_margin"
-    tools:context=".ui.openLogin.LoginActivity">
+    tools:context=".ui.openLogin.LoginFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/user_image_view"

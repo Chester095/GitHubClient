@@ -8,7 +8,7 @@ import com.geekbrains.githubclient.databinding.ActivityEditLoginBinding
 import com.geekbrains.githubclient.domain.Contact
 
 
-class EditLoginActivity() : AppCompatActivity(), EditLoginContract.View {
+class EditLoginFragment() : AppCompatActivity(), EditLoginContract.View {
     private lateinit var binding: ActivityEditLoginBinding
     lateinit var presenter: EditLoginContract.Presenter
 
