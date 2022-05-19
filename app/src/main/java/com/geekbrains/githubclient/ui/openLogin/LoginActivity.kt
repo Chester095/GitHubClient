@@ -1,4 +1,4 @@
-package com.geekbrains.githubclient.ui.login
+package com.geekbrains.githubclient.ui.openLogin
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -14,7 +14,7 @@ class LoginActivity : AppCompatActivity() {
 
     // подключаем гугловский вьюмодель
     private val viewModel: ReposViewModel by viewModels { ReposViewModelFactory(app.gitProjectsRepo) }
-    private val adapter = LoginRecyclingAdapter()
+    private val adapter = ProjectsRecyclingAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,4 +1,4 @@
-package com.geekbrains.githubclient.ui.main
+package com.geekbrains.githubclient.ui.listLogins
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.githubclient.R
 import com.geekbrains.githubclient.domain.Contact
 
-class MainRecyclingAdapter(private val presenter: MainContract.Presenter) :
+class LoginsRecyclingAdapter(private val mainPresenter: LoginsContract.Presenter) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class LoginViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView),
-        MainContract.ItemView {
+        LoginsContract.ItemView {
 
         private val loginTextView = itemView.findViewById<TextView>(R.id.login_text_view)
         private val imageViewEdit = itemView.findViewById<ImageView>(R.id.image_view_edit)
@@ -24,13 +24,13 @@ class MainRecyclingAdapter(private val presenter: MainContract.Presenter) :
 
         init {
             imageViewEdit.setOnClickListener {
-                presenter.onEditClicked(currentContact)
+                mainPresenter.onEditClicked(currentContact)
             }
             imageViewDelete.setOnClickListener {
-                presenter.onDeleteClicked(currentContact)
+                mainPresenter.onDeleteClicked(currentContact)
             }
             itemView.setOnClickListener {
-                presenter.onItemClicked(currentContact)
+                mainPresenter.onItemClicked(currentContact)
             }
 
         }
@@ -49,11 +49,11 @@ class MainRecyclingAdapter(private val presenter: MainContract.Presenter) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is LoginViewHolder) {
-            presenter.onBindItemView(holder, position)
+            mainPresenter.onBindItemView(holder, position)
         }
     }
 
-    override fun getItemCount(): Int = presenter.itemCount
+    override fun getItemCount(): Int = mainPresenter.itemCount
 
     fun reLoad() {
         notifyDataSetChanged()

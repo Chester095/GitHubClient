@@ -1,14 +1,14 @@
-package com.geekbrains.githubclient.ui.main
+package com.geekbrains.githubclient.ui.listLogins
 
 import android.content.Context
 import com.geekbrains.githubclient.domain.Contact
 import com.geekbrains.githubclient.data.DataHandlerLogin
 
-class MainPresenter(_view: MainContract.View, context: Context) : MainContract.Presenter {
+class LoginsPresenter(_view: LoginsContract.View, context: Context) : LoginsContract.Presenter {
 
-    private var view: MainContract.View = _view
+    private var view: LoginsContract.View = _view
     private var dataHandler = DataHandlerLogin(context)
-    private var adapterMain: MainRecyclingAdapter = MainRecyclingAdapter(this)
+    private var adapterMain: LoginsRecyclingAdapter = LoginsRecyclingAdapter(this)
 
     init {
         view.initViews(adapterMain)
@@ -53,7 +53,7 @@ class MainPresenter(_view: MainContract.View, context: Context) : MainContract.P
         view.showLoginActivity(contact)
     }
 
-    override fun onBindItemView(itemView: MainRecyclingAdapter.LoginViewHolder, pos: Int) {
+    override fun onBindItemView(itemView: LoginsRecyclingAdapter.LoginViewHolder, pos: Int) {
         itemView.bindItem(getAllContacts()[pos])
     }
 

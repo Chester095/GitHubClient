@@ -1,4 +1,4 @@
-package com.geekbrains.githubclient.ui.login
+package com.geekbrains.githubclient.ui.openLogin
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

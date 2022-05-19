@@ -1,4 +1,4 @@
-package com.geekbrains.githubclient.ui.editlogin
+package com.geekbrains.githubclient.ui.editLogin
 
 import android.content.Context
 import android.util.Log

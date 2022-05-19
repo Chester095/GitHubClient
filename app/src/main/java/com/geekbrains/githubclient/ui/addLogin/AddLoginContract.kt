@@ -1,4 +1,4 @@
-package com.geekbrains.githubclient.ui.addlogin
+package com.geekbrains.githubclient.ui.addLogin
 
 import com.geekbrains.githubclient.domain.Contact
 

@@ -1,4 +1,4 @@
-package com.geekbrains.githubclient.ui.login
+package com.geekbrains.githubclient.ui.openLogin
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

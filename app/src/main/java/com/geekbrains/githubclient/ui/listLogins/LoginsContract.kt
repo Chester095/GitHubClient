@@ -1,10 +1,10 @@
-package com.geekbrains.githubclient.ui.main
+package com.geekbrains.githubclient.ui.listLogins
 
 import com.geekbrains.githubclient.domain.Contact
 
-interface MainContract {
+interface LoginsContract {
     interface View {
-        fun initViews(adapterMain: MainRecyclingAdapter)
+        fun initViews(adapterMain: LoginsRecyclingAdapter)
         fun showInsertLoginActivity()
         fun showEditLoginActivity(contact: Contact)
         fun showLoginActivity(contact: Contact)
@@ -26,6 +26,6 @@ interface MainContract {
         fun onEditClicked(contact: Contact)
         fun onDeleteClicked(contact: Contact)
         fun onItemClicked(contact: Contact)
-        fun onBindItemView(itemView: MainRecyclingAdapter.LoginViewHolder, pos: Int)
+        fun onBindItemView(itemView: LoginsRecyclingAdapter.LoginViewHolder, pos: Int)
     }
 }

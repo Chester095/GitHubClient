@@ -1,4 +1,4 @@
-package com.geekbrains.githubclient.ui.addlogin
+package com.geekbrains.githubclient.ui.addLogin
 
 import android.os.Bundle
 import android.widget.Toast

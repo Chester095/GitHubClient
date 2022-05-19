@@ -1,4 +1,4 @@
-package com.geekbrains.githubclient.ui.main
+package com.geekbrains.githubclient.ui.listLogins
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.githubclient.R
 import com.geekbrains.githubclient.databinding.ActivityMainBinding
 import com.geekbrains.githubclient.domain.Contact
-import com.geekbrains.githubclient.ui.addlogin.AddLoginActivity
-import com.geekbrains.githubclient.ui.editlogin.EditLoginActivity
-import com.geekbrains.githubclient.ui.login.LoginActivity
+import com.geekbrains.githubclient.ui.addLogin.AddLoginActivity
+import com.geekbrains.githubclient.ui.editLogin.EditLoginActivity
+import com.geekbrains.githubclient.ui.openLogin.LoginActivity
 
-class MainActivity : AppCompatActivity(), MainContract.View {
+class LoginsActivity : AppCompatActivity(), LoginsContract.View {
     private lateinit var binding: ActivityMainBinding
-    lateinit var presenter: MainContract.Presenter
+    lateinit var presenter: LoginsContract.Presenter
     private lateinit var rv: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,13 +23,13 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         setTheme(R.style.MyThemeGreen)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        presenter = MainPresenter(this, applicationContext)
+        presenter = LoginsPresenter(this, applicationContext)
         binding.recyclerFAB.setOnClickListener {
             presenter.addButtonClicked()
         }
     }
 
-    override fun initViews(adapterMain: MainRecyclingAdapter) {
+    override fun initViews(adapterMain: LoginsRecyclingAdapter) {
         binding.loginRecyclerView.adapter = adapterMain
     }
 

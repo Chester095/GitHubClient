@@ -1,4 +1,4 @@
-package com.geekbrains.githubclient.ui.login
+package com.geekbrains.githubclient.ui.openLogin
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

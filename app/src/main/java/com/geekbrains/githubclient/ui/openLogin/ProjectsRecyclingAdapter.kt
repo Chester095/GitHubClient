@@ -1,10 +1,10 @@
-package com.geekbrains.githubclient.ui.login
+package com.geekbrains.githubclient.ui.openLogin
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.githubclient.domain.GitProjectEntity
 
-class LoginRecyclingAdapter :  RecyclerView.Adapter<GitProjectVh>()  {
+class ProjectsRecyclingAdapter    :  RecyclerView.Adapter<GitProjectVh>()  {
     private var data: List<GitProjectEntity> = emptyList()
 
     // для обновления адаптера. метод который настраивает данные
