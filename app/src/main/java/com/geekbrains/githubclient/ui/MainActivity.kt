@@ -21,7 +21,8 @@ class MainActivity : AppCompatActivity(), LoginsFragment.Controller {
 
         if (savedInstanceState == null) {
             val loginsFragment: Fragment = LoginsFragment()
-            supportFragmentManager.beginTransaction()
+            supportFragmentManager
+                .beginTransaction()
                 .add(binding.mainContainer.id, loginsFragment)
                 .commit()
         }
@@ -30,6 +31,12 @@ class MainActivity : AppCompatActivity(), LoginsFragment.Controller {
     override fun openScreen(conact: Contact) {
         supportFragmentManager
             .beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.push_up_in,
+                R.anim.push_up_out,
+                R.anim.slide_out
+            )
             .addToBackStack(null)
             .replace(
                 binding.mainContainer.id,
