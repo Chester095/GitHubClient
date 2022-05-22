@@ -1,6 +1,6 @@
 package com.geekbrains.githubclient.domain
 
-data class Contact(
+data class Login(
     val id: Int = 0,
     val login: String,
 )

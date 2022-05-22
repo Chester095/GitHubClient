@@ -1,6 +1,5 @@
 package com.geekbrains.githubclient.data.retrofit
 
-import com.geekbrains.githubclient.domain.Contact
 import com.geekbrains.githubclient.domain.GitProjectEntity
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET

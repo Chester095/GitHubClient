@@ -1,28 +1,90 @@
 package com.geekbrains.githubclient.ui.listLogins
 
-import android.app.AlertDialog
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import com.geekbrains.githubclient.R
-import com.geekbrains.githubclient.databinding.ActivityMainBinding
-import com.geekbrains.githubclient.domain.Contact
-import com.geekbrains.githubclient.ui.addLogin.AddLoginFragment
-import com.geekbrains.githubclient.ui.editLogin.EditLoginFragment
-import com.geekbrains.githubclient.ui.openLogin.LoginFragment
+import com.geekbrains.githubclient.app
+import com.geekbrains.githubclient.databinding.FragmentListLoginsBinding
+import com.geekbrains.githubclient.domain.Login
+import com.geekbrains.githubclient.utils.AppState
+import java.util.*
 
 class LoginsFragment : Fragment() {
 
-    private lateinit var binding: ActivityMainBinding
-    lateinit var presenter: LoginsContract.Presenter
-    private lateinit var rv: RecyclerView
+    private val keyViewModelId = "key_view_model"
+    private var _binding: FragmentListLoginsBinding? = null
+    private val binding get() = _binding!!
+    private val controller by lazy { activity as Controller }
+    private lateinit var viewModel: LoginsViewModel
+    private val adapter = LoginsRecyclingAdapter { login ->
+        controller.openScreen(login)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    interface Controller {
+        fun openScreen(login: Login)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (activity !is Controller) {
+            throw IllegalStateException("Activity должна наследоваться от LoginsFragment.Controller")
+        }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentListLoginsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.loginRecyclerView.adapter = adapter
+
+        if (savedInstanceState != null) {
+            val viewModelId = savedInstanceState.getString(keyViewModelId)!!
+            viewModel = app.viewModelStore.getViewModel(viewModelId) as LoginsViewModel
+        } else {
+            val id = UUID.randomUUID().toString()
+            //TODO а надо ли оно нам
+            viewModel = LoginsViewModel(id)
+            app.viewModelStore.saveViewModel(viewModel)
+        }
+        // Подписались на изменения liveData
+        viewModel.getData().observe(viewLifecycleOwner) { state ->
+            render(state)
+        }
+        // Запросили новые данные
+        viewModel.getLogin()
+
+
+    }
+
+    private fun render(state: AppState) {
+        when (state) {
+            is AppState.Success<*> -> {
+
+                val login: List<Login> = state.data as List<Login>
+                adapter.setLogin(login)
+            }
+            is AppState.Error -> {
+                // TODO: 14.04.2022
+            }
+            is AppState.Loading -> {
+                // TODO: 14.04.2022
+            }
+        }
+
+    }
+/*    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         presenter = LoginsPresenter(this, applicationContext)
         binding.recyclerFAB.setOnClickListener {
@@ -30,43 +92,37 @@ class LoginsFragment : Fragment() {
         }
     }
 
-    private val controller by lazy { activity as Controller }
-
-    interface Controller {
-        fun openScreen(user: User)
-    }
-
-    override fun initViews(adapterMain: LoginsRecyclingAdapter) {
+    fun initViews(adapterMain: LoginsRecyclingAdapter) {
         binding.loginRecyclerView.adapter = adapterMain
     }
 
-    override fun showInsertLoginActivity() {
+    fun showInsertLoginActivity() {
         startActivity(Intent(this, AddLoginFragment::class.java))
     }
 
-    override fun showEditLoginActivity(contact: Contact) {
+    fun showEditLoginActivity(login: Login) {
         val intent = Intent(this, EditLoginFragment::class.java)
-        intent.putExtra("contactId", contact.id)
-        intent.putExtra("contactLogin", contact.login)
+        intent.putExtra("contactId", login.id)
+        intent.putExtra("contactLogin", login.login)
         startActivity(intent)
     }
 
-    override fun showLoginActivity(contact: Contact) {
+    fun showLoginActivity(login: Login) {
         val intent = Intent(this, LoginFragment::class.java)
-        intent.putExtra("contactId", contact.id)
-        intent.putExtra("contactLogin", contact.login)
+        intent.putExtra("contactId", login.id)
+        intent.putExtra("contactLogin", login.login)
         startActivity(intent)
     }
 
-    override fun areYouSureAlertDialog(contact: Contact) {
+    fun areYouSureAlertDialog(login: Login) {
         val builder = AlertDialog.Builder(this)
 
         builder.setTitle("Удалить логин")
-        builder.setMessage("Вы уверены что хотите удалить логин ${contact.login}")
+        builder.setMessage("Вы уверены что хотите удалить логин ${login.login}")
         builder.setIcon(android.R.drawable.ic_dialog_alert)
 
         builder.setPositiveButton("ДА") { dialog, _ ->
-            presenter.deleteContact(contact)
+            presenter.deleteContact(login)
             dialog.dismiss()
         }
 
@@ -77,10 +133,11 @@ class LoginsFragment : Fragment() {
         val alertDialog = builder.create()
         alertDialog.setCancelable(false)
         alertDialog.show()
+    }*/
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
-    private fun makeToast(text: String) {
-        Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT)
-            .show()
-    }
 }

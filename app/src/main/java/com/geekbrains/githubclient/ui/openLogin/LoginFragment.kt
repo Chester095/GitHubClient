@@ -2,23 +2,21 @@ package com.geekbrains.githubclient.ui.openLogin
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.geekbrains.githubclient.R
 import com.geekbrains.githubclient.app
 import com.geekbrains.githubclient.databinding.FragmentListLoginsBinding
-import com.geekbrains.githubclient.domain.Contact
+import com.geekbrains.githubclient.domain.Login
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentListLoginsBinding
 
     companion object {
         private const val USER_ARGS_KEY = "USER"
-        fun newInstance(contact: Contact) = LoginFragment().apply {
+        fun newInstance(login: Login) = LoginFragment().apply {
             arguments = Bundle()
-            arguments?.putParcelable(USER_ARGS_KEY, contact)
+            arguments?.putParcelable(USER_ARGS_KEY, login)
         }
     }
 
@@ -28,7 +26,6 @@ class LoginFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.MyThemeGreen)
         binding = FragmentListLoginsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

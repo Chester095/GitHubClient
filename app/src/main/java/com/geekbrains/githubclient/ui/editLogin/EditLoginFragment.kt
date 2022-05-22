@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.geekbrains.githubclient.R
 import com.geekbrains.githubclient.databinding.ActivityEditLoginBinding
-import com.geekbrains.githubclient.domain.Contact
+import com.geekbrains.githubclient.domain.Login
 
 
 class EditLoginFragment() : AppCompatActivity(), EditLoginContract.View {
@@ -40,11 +40,11 @@ class EditLoginFragment() : AppCompatActivity(), EditLoginContract.View {
     }
 
     override fun setSuccess(contactId: Int) {
-        val contactIn = Contact(
+        val loginIn = Login(
             contactId,
             binding.loginEditText.text.toString()
         )
-        presenter.updateContact(contactIn)
+        presenter.updateContact(loginIn)
         onBackPressed()
     }
 

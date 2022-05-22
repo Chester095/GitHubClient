@@ -1,6 +1,6 @@
 package com.geekbrains.githubclient.ui.editLogin
 
-import com.geekbrains.githubclient.domain.Contact
+import com.geekbrains.githubclient.domain.Login
 
 interface EditLoginContract {
     interface View {
@@ -11,7 +11,7 @@ interface EditLoginContract {
 
     interface Presenter {
         fun onCancel()
-        fun updateContact(contact: Contact)
+        fun updateContact(login: Login)
 
         val itemCount: Int
     }

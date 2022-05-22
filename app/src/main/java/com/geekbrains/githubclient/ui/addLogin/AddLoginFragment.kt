@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.geekbrains.githubclient.R
 import com.geekbrains.githubclient.databinding.ActivityAddLoginBinding
-import com.geekbrains.githubclient.domain.Contact
+import com.geekbrains.githubclient.domain.Login
 
 class AddLoginFragment() : AppCompatActivity(), AddLoginContract.View {
     private lateinit var binding: ActivityAddLoginBinding
@@ -29,7 +29,7 @@ class AddLoginFragment() : AppCompatActivity(), AddLoginContract.View {
     }
 
     override fun setSuccess() {
-        presenter.onSaveLogin(Contact(login = binding.loginEditText.text.toString()))
+        presenter.onSaveLogin(Login(login = binding.loginEditText.text.toString()))
         onBackPressed()
     }
 

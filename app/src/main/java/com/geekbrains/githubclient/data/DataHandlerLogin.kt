@@ -5,7 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.geekbrains.githubclient.domain.Contact
+import com.geekbrains.githubclient.domain.Login
 
 class DataHandlerLogin(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -34,11 +34,11 @@ class DataHandlerLogin(context: Context) :
     }
 
     // Insert contact
-    fun insertContact(contact: Contact): Long {
+    fun insertContact(login: Login): Long {
         val db: SQLiteDatabase = writableDatabase
         val values = ContentValues()
 
-        values.put(KEY_NAME, contact.login)
+        values.put(KEY_NAME, login.login)
 
         val result = db.insert(TABLE_NAME, null, values)
 
@@ -47,9 +47,9 @@ class DataHandlerLogin(context: Context) :
     }
 
     // Reading all contacts from a database
-    fun getAllContacts(): List<Contact> {
+    fun getAllContacts(): List<Login> {
         val db: SQLiteDatabase = readableDatabase
-        val contactList = ArrayList<Contact>()
+        val loginList = ArrayList<Login>()
 
         val selectAll = "SELECT * FROM $TABLE_NAME"
         val cursor: Cursor = db.rawQuery(selectAll, null)
@@ -57,42 +57,43 @@ class DataHandlerLogin(context: Context) :
         if (cursor.moveToFirst()) {
             do {
 
-                val contact = Contact(
+                val login = Login(
                     id = cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID)),
                     login = cursor.getString(cursor.getColumnIndexOrThrow(KEY_NAME))
                 )
-                contactList.add(contact)
+                loginList.add(login)
             } while (cursor.moveToNext())
         }
         cursor.close()
-        return contactList
+        return loginList
     }
 
     // Updating a contact
-    fun updateContact(contact: Contact): Int {
+    fun updateContact(login: Login): Int {
         val db = this.writableDatabase
 
         val contentValues = ContentValues()
-        contentValues.put(KEY_NAME, contact.login)
+        contentValues.put(KEY_NAME, login.login)
 
         // updating row
-        val result = db.update(TABLE_NAME, contentValues, "$KEY_ID = ${contact.id}", null)
+        val result = db.update(TABLE_NAME, contentValues, "$KEY_ID = ${login.id}", null)
 
         db.close()
         return result
     }
 
     // Delete a contact
-    fun deleteContact(contact: Contact): Int {
+    fun deleteContact(login: Login): Int {
         val db = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put(KEY_ID, contact.id)
+        contentValues.put(KEY_ID, login.id)
 
         // deleting row
-        val result = db.delete(TABLE_NAME, "$KEY_ID = ${contact.id}", null)
+        val result = db.delete(TABLE_NAME, "$KEY_ID = ${login.id}", null)
 
         db.close()
         return result
     }
+
 
 }

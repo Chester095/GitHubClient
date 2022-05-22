@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.geekbrains.githubclient.R
 import com.geekbrains.githubclient.databinding.ActivityMainBinding
-import com.geekbrains.githubclient.domain.Contact
+import com.geekbrains.githubclient.domain.Login
 import com.geekbrains.githubclient.ui.listLogins.LoginsFragment
 import com.geekbrains.githubclient.ui.openLogin.LoginFragment
 
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), LoginsFragment.Controller {
         }
     }
 
-    override fun openScreen(conact: Contact) {
+    override fun openScreen(login: Login) {
         supportFragmentManager
             .beginTransaction()
             .setCustomAnimations(
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), LoginsFragment.Controller {
             .addToBackStack(null)
             .replace(
                 binding.mainContainer.id,
-                LoginFragment.newInstance(conact)
+                LoginFragment.newInstance(login)
             )
             .commit()
     }
