@@ -10,15 +10,16 @@ import com.geekbrains.githubclient.databinding.FragmentListLoginsBinding
 import com.geekbrains.githubclient.domain.Login
 
 class LoginFragment : Fragment() {
-    private lateinit var binding: FragmentListLoginsBinding
 
     companion object {
-        private const val USER_ARGS_KEY = "USER"
+        private const val LOGIN_ARGS_KEY = "LOGIN"
         fun newInstance(login: Login) = LoginFragment().apply {
             arguments = Bundle()
-            arguments?.putParcelable(USER_ARGS_KEY, login)
+            arguments?.putParcelable(LOGIN_ARGS_KEY, login)
         }
     }
+
+    private lateinit var binding: FragmentListLoginsBinding
 
     // подключаем гугловский вьюмодель
     private val viewModel: ReposViewModel by viewModels { ReposViewModelFactory(app.gitProjectsRepo) }

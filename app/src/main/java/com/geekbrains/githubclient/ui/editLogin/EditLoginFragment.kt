@@ -4,18 +4,18 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.geekbrains.githubclient.R
-import com.geekbrains.githubclient.databinding.ActivityEditLoginBinding
+import com.geekbrains.githubclient.databinding.FragmentEditLoginBinding
 import com.geekbrains.githubclient.domain.Login
 
 
 class EditLoginFragment() : AppCompatActivity(), EditLoginContract.View {
-    private lateinit var binding: ActivityEditLoginBinding
+    private lateinit var binding: FragmentEditLoginBinding
     lateinit var presenter: EditLoginContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.MyThemeGreen)
-        binding = ActivityEditLoginBinding.inflate(layoutInflater)
+        binding = FragmentEditLoginBinding.inflate(layoutInflater)
         presenter = EditLoginPresenter(this, applicationContext)
         setContentView(binding.root)
 

@@ -7,12 +7,16 @@ import com.geekbrains.githubclient.App
 import com.geekbrains.githubclient.domain.GitProjectEntity
 import com.geekbrains.githubclient.domain.ProjectsRepo
 import com.geekbrains.githubclient.utils.AppState
-import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.kotlin.subscribeBy
+import com.geekbrains.githubclient.utils.BaseViewModel
 
-class LoginsViewModel(private val gitProjectRepo: ProjectsRepo) : ViewModel() {
+class LoginsViewModel(override val id: String) :
+    ViewModel(),
+    LoginsContracts.ViewModelContract,
+    BaseViewModel {
+
     // список репозиториев
     private val _repos = MutableLiveData<List<GitProjectEntity>>()
+
     private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
     val repos: LiveData<List<GitProjectEntity>> = _repos
 
@@ -20,7 +24,7 @@ class LoginsViewModel(private val gitProjectRepo: ProjectsRepo) : ViewModel() {
 
     fun getData(): LiveData<AppState> = liveDataToObserve
 
-    fun getLogin() {
+    override fun getLogin() {
         liveDataToObserve.value = AppState.Loading
         Thread {
             val user = repo.getUsersFromLocalStorage()

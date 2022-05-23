@@ -27,8 +27,9 @@ class RetrofitProjectsRepoImpl : ProjectsRepo {
         return api.listRepos(username)
     }
 
-    override fun getUsersFromLocalStorage(context:Context): List<Login> {
-        return DataHandlerLogin(context).getAllContacts()
+    override fun getUsersFromLocalStorage(): List<Login> {
+        return DataHandlerLogin().getAllContacts()
     }
+
 
 }

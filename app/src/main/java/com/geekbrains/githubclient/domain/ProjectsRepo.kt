@@ -9,5 +9,5 @@ interface ProjectsRepo {
     // получать данные по имени пользователя
     fun observeReposForUser(username: String): Single<List<GitProjectEntity>>
 
-    fun getUsersFromLocalStorage(context: Context): List<Login>
+    fun getUsersFromLocalStorage(): List<Login>
 }

@@ -4,17 +4,16 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.geekbrains.githubclient.R
-import com.geekbrains.githubclient.databinding.ActivityAddLoginBinding
+import com.geekbrains.githubclient.databinding.FragmentAddLoginBinding
 import com.geekbrains.githubclient.domain.Login
 
 class AddLoginFragment() : AppCompatActivity(), AddLoginContract.View {
-    private lateinit var binding: ActivityAddLoginBinding
+    private lateinit var binding: FragmentAddLoginBinding
     lateinit var presenter: AddLoginContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.MyThemeGreen)
-        binding = ActivityAddLoginBinding.inflate(layoutInflater)
+        binding = FragmentAddLoginBinding.inflate(layoutInflater)
         presenter = AddLoginPresenter(this, applicationContext)
         setContentView(binding.root)
         initSaveButton()
