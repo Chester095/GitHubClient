@@ -23,12 +23,12 @@ class RetrofitProjectsRepoImpl : ProjectsRepo {
 
     private val api: GitHubApi = retrofit.create(GitHubApi::class.java)
 
-    override fun observeReposForUser(username: String): Single<List<GitProjectEntity>> {
+    override fun getProjectsFromServer(username: String): Single<List<GitProjectEntity>> {
         return api.listRepos(username)
     }
 
-    override fun getUsersFromLocalStorage(): List<Login> {
-        return DataHandlerLogin().getAllContacts()
+    override fun getUsersFromLocalStorage(context: Context): List<Login> {
+        return DataHandlerLogin(context).getAllContacts()
     }
 
 

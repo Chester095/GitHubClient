@@ -1,5 +1,6 @@
 package com.geekbrains.githubclient.ui.listLogins
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,10 +25,10 @@ class LoginsViewModel(override val id: String) :
 
     fun getData(): LiveData<AppState> = liveDataToObserve
 
-    override fun getLogin() {
+    override fun getLogin(context:Context) {
         liveDataToObserve.value = AppState.Loading
         Thread {
-            val user = repo.getUsersFromLocalStorage()
+            val user = repo.getUsersFromLocalStorage(context)
             liveDataToObserve.postValue(AppState.Success(user))
         }.start()
     }

@@ -3,48 +3,36 @@ package com.geekbrains.githubclient.ui.openLogin
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.geekbrains.githubclient.App
 import com.geekbrains.githubclient.domain.GitProjectEntity
 import com.geekbrains.githubclient.domain.ProjectsRepo
+import com.geekbrains.githubclient.utils.AppState
+import com.geekbrains.githubclient.utils.BaseViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.subscribeBy
 
-class ReposViewModel(private val gitProjectRepo: ProjectsRepo) : ViewModel() {
-    // список репозиториев
-    private val _repos = MutableLiveData<List<GitProjectEntity>>()
-    val repos: LiveData<List<GitProjectEntity>> = _repos
+class ReposViewModel(override val id: String) : ViewModel(), CardContracts.ViewModelContract, BaseViewModel {
 
-    // MutableLiveData - является расширением LiveData
-    // inProgress для демонстрации прогресса
-    private val _inProgress = MutableLiveData<Boolean>()
-    // LiveData - скрывает данные от изменений. только получать можно
-    val inProgress: LiveData<Boolean> = _inProgress
+    private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
+    private val repo: ProjectsRepo = App().gitProjectsRepo
 
-
-    // метод отписки. чтобы от всех отписаться
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
-    fun onShowRepos(username: String) {
-        // когда начинается загрузка true
-        _inProgress.postValue(true)
+    fun getData(): LiveData<AppState> = liveDataToObserve
 
-        // подписываемся, получаем результат и отправляем
+    override fun getProjectsRetrofit(name: String) {
         compositeDisposable.add(
-            gitProjectRepo
-                .observeReposForUser(username)
-                // подписались
+            repo
+                .getProjectsFromServer(name)
                 .subscribeBy {
-                    // когда закончилась загрузка false
-                    _inProgress.postValue(false)
-                    // пихаем в repos данные (список)
-                    // postValue - потокобезопасный метод
-                    _repos.postValue(it)
+                    liveDataToObserve.postValue(AppState.Success(it))
                 }
         )
     }
 
-    // отписаться
-    override fun onCleared() {
-        compositeDisposable.clear()
-        super.onCleared()
+    override fun getProjects(name: String) {
+        liveDataToObserve.value = AppState.Loading
+//        val project = repo.getPojectsUsersFromLocalStorage(name)
+//        liveDataToObserve.postValue(AppState.Success(project))
     }
 }

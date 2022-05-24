@@ -1,5 +1,6 @@
 package com.geekbrains.githubclient.ui.listLogins
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import com.geekbrains.githubclient.databinding.FragmentListLoginsBinding
 import com.geekbrains.githubclient.domain.Login
 import com.geekbrains.githubclient.utils.AppState
 import java.util.*
+
 
 class LoginsFragment : Fragment() {
 
@@ -61,8 +63,9 @@ class LoginsFragment : Fragment() {
         viewModel.getData().observe(viewLifecycleOwner) { state ->
             render(state)
         }
+
         // Запросили новые данные
-        viewModel.getLogin()
+        viewModel.getLogin(requireContext())
 
 
     }

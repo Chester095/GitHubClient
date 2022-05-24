@@ -7,7 +7,7 @@ import com.geekbrains.githubclient.data.DataHandlerLogin
 
 class AddLoginPresenter(_view: AddLoginContract.View, context: Context) : AddLoginContract.Presenter {
 
-    private var dataHandler = DataHandlerLogin()
+    private var dataHandler = DataHandlerLogin(context)
 
     override fun onSaveLogin(login: Login) {
         dataHandler.insertContact(login)
