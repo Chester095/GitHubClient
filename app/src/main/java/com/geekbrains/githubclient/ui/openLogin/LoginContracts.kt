@@ -1,6 +1,6 @@
 package com.geekbrains.githubclient.ui.openLogin
 
-interface CardContracts {
+interface LoginContracts {
 
     interface ViewModelContract {
         fun getProjects(name: String)

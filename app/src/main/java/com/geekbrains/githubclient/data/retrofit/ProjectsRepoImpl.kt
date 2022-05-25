@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.crypto.Cipher
 
 
-class RetrofitProjectsRepoImpl : ProjectsRepo {
+class ProjectsRepoImpl : ProjectsRepo {
     // 01:25:20 retrofit должен сконвертировать это в RX
 
     private val retrofit = Retrofit.Builder()

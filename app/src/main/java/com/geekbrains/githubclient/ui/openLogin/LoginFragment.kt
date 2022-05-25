@@ -1,6 +1,7 @@
 package com.geekbrains.githubclient.ui.openLogin
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -70,10 +71,10 @@ class LoginFragment : Fragment() {
                 adapter.setData(project)
             }
             is AppState.Error -> {
-                Log.d("","")
+                Log.d("!!!","AppState.Error")
             }
             is AppState.Loading -> {
-                // TODO
+                Log.d("!!!","AppState.Loading")
             }
         }
 
@@ -128,4 +129,6 @@ class LoginFragment : Fragment() {
     }
 
 }
+
+
 
