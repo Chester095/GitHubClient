@@ -1,8 +1,8 @@
 package com.geekbrains.githubclient.ui.listLogins
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +27,7 @@ class LoginsFragment : Fragment() {
 
     interface Controller {
         fun openScreen(login: Login)
+        fun addLogin()
     }
 
     override fun onAttach(context: Context) {
@@ -42,7 +43,9 @@ class LoginsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentListLoginsBinding.inflate(inflater, container, false)
+        binding.recyclerFAB.setOnClickListener { controller.addLogin() }
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,7 +58,6 @@ class LoginsFragment : Fragment() {
             viewModel = app.viewModelStore.getViewModel(viewModelId) as LoginsViewModel
         } else {
             val id = UUID.randomUUID().toString()
-            //TODO а надо ли оно нам
             viewModel = LoginsViewModel(id)
             app.viewModelStore.saveViewModel(viewModel)
         }
@@ -78,10 +80,10 @@ class LoginsFragment : Fragment() {
                 adapter.setLogin(login)
             }
             is AppState.Error -> {
-                // TODO: 14.04.2022
+                Log.d("!!!","AppState.Error")
             }
             is AppState.Loading -> {
-                // TODO: 14.04.2022
+                Log.d("!!!","AppState.Loading")
             }
         }
 

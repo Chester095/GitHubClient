@@ -2,6 +2,7 @@ package com.geekbrains.githubclient.data.retrofit
 
 import android.content.Context
 import com.geekbrains.githubclient.data.DataHandlerLogin
+import com.geekbrains.githubclient.data.db.Logins
 import com.geekbrains.githubclient.domain.GitProjectEntity
 import com.geekbrains.githubclient.domain.Login
 import com.geekbrains.githubclient.domain.ProjectsRepo
@@ -29,6 +30,10 @@ class ProjectsRepoImpl : ProjectsRepo {
 
     override fun getUsersFromLocalStorage(context: Context): List<Login> {
         return DataHandlerLogin(context).getAllContacts()
+    }
+
+    override fun getUsersFromLocalDB(): List<Login> {
+        return Logins().logins
     }
 
 

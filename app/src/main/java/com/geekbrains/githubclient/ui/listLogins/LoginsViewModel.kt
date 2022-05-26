@@ -28,7 +28,8 @@ class LoginsViewModel(override val id: String) :
     override fun getLogin(context:Context) {
         liveDataToObserve.value = AppState.Loading
         Thread {
-            val user = repo.getUsersFromLocalStorage(context)
+            val user = repo.getUsersFromLocalDB()
+//            val user = repo.getUsersFromLocalStorage(context)
             liveDataToObserve.postValue(AppState.Success(user))
         }.start()
     }

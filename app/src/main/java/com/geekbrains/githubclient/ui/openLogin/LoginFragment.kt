@@ -42,11 +42,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val contactLogin = arguments?.getParcelable<Login>("LOGIN")
-        contactLogin?.let {
-            binding.headerLoginTextView.text = it.login
-            // Запросили новые данные
-            viewModel.getProjectsRetrofit(it.login)
-        }
         binding.gitProjectsRecyclerView.adapter = adapter
 
         if (savedInstanceState != null) {
@@ -57,6 +52,12 @@ class LoginFragment : Fragment() {
             viewModel = ReposViewModel(id)
             app.viewModelStore.saveViewModel(viewModel)
         }
+
+        // Запросили новые данные
+        contactLogin?.let {
+            binding.headerLoginTextView.text = it.login
+            viewModel.getProjectsRetrofit(it.login) }
+
         // Подписались на изменения liveData
         viewModel.getData().observe(viewLifecycleOwner) { state ->
             render(state)
@@ -79,50 +80,6 @@ class LoginFragment : Fragment() {
         }
 
     }
-
-/*    private fun getIntentContact() {
-        val intent = intent
-        val contactId = intent.getIntExtra("contactId", 0)
-        val contactLogin = intent.getStringExtra("contactLogin")
-        contactLogin?.let {
-            setTextView(it)
-            initOutgoingEvents(it)
-        }
-        initIncomingEvents()
-    }
-
-    private fun setTextView(contactLogin: Login) {
-        binding.headerLoginTextView.text = contactLogin.login
-    }
-
-
-    private fun initViews() {
-        binding.gitProjectsRecyclerView.layoutManager = LinearLayoutManager(this)
-        // приложение само начнёт считать
-        adapter.setHasStableIds(true)
-        binding.gitProjectsRecyclerView.adapter = adapter
-    }
-
-
-    private fun initOutgoingEvents(contactLogin: String) {
-        // передаём в onShowRepos contactLogin
-        viewModel.onShowRepos(contactLogin)
-
-    }
-
-    private fun initIncomingEvents() {
-        // подписываемся на вьюмодель
-        viewModel.repos.observe(this) {
-            // передаём в адаптер те данные, которые пришли
-            // обновляем каждый раз адаптер, когда к нам приходят новые данные
-            adapter.setData(it)
-        }
-        // подписываемся на состояние загрузки
-        viewModel.inProgress.observe(this) { inProgress ->
-            binding.progressBarLayout.isVisible = inProgress
-        }
-    }*/
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
