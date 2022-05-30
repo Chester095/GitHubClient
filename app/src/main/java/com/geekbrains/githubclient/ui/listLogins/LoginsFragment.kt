@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import com.geekbrains.githubclient.app
 import com.geekbrains.githubclient.databinding.FragmentListLoginsBinding
 import com.geekbrains.githubclient.domain.Login
+import com.geekbrains.githubclient.domain.ProjectsRepo
 import com.geekbrains.githubclient.utils.AppState
+import org.koin.android.ext.android.inject
 import java.util.*
 
 
@@ -24,6 +26,8 @@ class LoginsFragment : Fragment() {
     private val adapter = LoginsRecyclingAdapter { login ->
         controller.openScreen(login)
     }
+
+    private val repo: ProjectsRepo by inject()
 
     interface Controller {
         fun openScreen(login: Login)
@@ -58,7 +62,7 @@ class LoginsFragment : Fragment() {
             viewModel = app.viewModelStore.getViewModel(viewModelId) as LoginsViewModel
         } else {
             val id = UUID.randomUUID().toString()
-            viewModel = LoginsViewModel(id)
+            viewModel = LoginsViewModel(id, repo)
             app.viewModelStore.saveViewModel(viewModel)
         }
         // Подписались на изменения liveData

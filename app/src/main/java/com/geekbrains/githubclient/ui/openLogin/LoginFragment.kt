@@ -13,6 +13,7 @@ import com.geekbrains.githubclient.domain.GitProjectEntity
 import com.geekbrains.githubclient.domain.Login
 import com.geekbrains.githubclient.domain.ProjectsRepo
 import com.geekbrains.githubclient.utils.AppState
+import org.koin.android.ext.android.inject
 import java.util.*
 
 class LoginFragment : Fragment() {
@@ -30,6 +31,7 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
     private val adapter = ProjectsRecyclingAdapter()
     private lateinit var viewModel: ReposViewModel
+    private val repo: ProjectsRepo by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,7 +52,7 @@ class LoginFragment : Fragment() {
             viewModel = app.viewModelStore.getViewModel(viewModelId) as ReposViewModel
         } else {
             val id = UUID.randomUUID().toString()
-            viewModel = ReposViewModel(id)
+            viewModel = ReposViewModel(id, repo)
             app.viewModelStore.saveViewModel(viewModel)
         }
 

@@ -10,10 +10,10 @@ import com.geekbrains.githubclient.utils.BaseViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.subscribeBy
 
-class ReposViewModel(override val id: String) : ViewModel(), LoginContracts.ViewModelContract, BaseViewModel {
+class ReposViewModel(override val id: String, private val repository: ProjectsRepo) : ViewModel(), LoginContracts.ViewModelContract, BaseViewModel {
 
     private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
-    private val repo: ProjectsRepo = App().gitProjectsRepo
+    private val repo: ProjectsRepo = repository
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 

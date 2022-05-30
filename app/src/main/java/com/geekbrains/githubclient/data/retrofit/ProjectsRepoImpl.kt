@@ -13,16 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.crypto.Cipher
 
 
-class ProjectsRepoImpl : ProjectsRepo {
-    // 01:25:20 retrofit должен сконвертировать это в RX
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.github.com/")
-        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    private val api: GitHubApi = retrofit.create(GitHubApi::class.java)
+class ProjectsRepoImpl(private val api: GitHubApi) : ProjectsRepo {
 
     override fun getProjectsFromServer(username: String): Single<List<GitProjectEntity>> {
         return api.listRepos(username)

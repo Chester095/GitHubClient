@@ -4,24 +4,17 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.geekbrains.githubclient.App
-import com.geekbrains.githubclient.domain.GitProjectEntity
 import com.geekbrains.githubclient.domain.ProjectsRepo
 import com.geekbrains.githubclient.utils.AppState
 import com.geekbrains.githubclient.utils.BaseViewModel
 
-class LoginsViewModel(override val id: String) :
+class LoginsViewModel(override val id: String, private val repository: ProjectsRepo) :
     ViewModel(),
     LoginsContracts.ViewModelContract,
     BaseViewModel {
 
-    // список репозиториев
-    private val _repos = MutableLiveData<List<GitProjectEntity>>()
-
     private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
-    val repos: LiveData<List<GitProjectEntity>> = _repos
-
-    private val repo: ProjectsRepo = App().gitProjectsRepo
+    private val repo: ProjectsRepo = repository
 
     fun getData(): LiveData<AppState> = liveDataToObserve
 
@@ -29,7 +22,6 @@ class LoginsViewModel(override val id: String) :
         liveDataToObserve.value = AppState.Loading
         Thread {
             val user = repo.getUsersFromLocalDB()
-//            val user = repo.getUsersFromLocalStorage(context)
             liveDataToObserve.postValue(AppState.Success(user))
         }.start()
     }

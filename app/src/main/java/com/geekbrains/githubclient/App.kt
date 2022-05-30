@@ -3,16 +3,27 @@ package com.geekbrains.githubclient
 import android.app.Application
 import android.content.Context
 import androidx.fragment.app.Fragment
-import com.geekbrains.githubclient.data.retrofit.ProjectsRepoImpl
-import com.geekbrains.githubclient.domain.ProjectsRepo
+import com.geekbrains.githubclient.data.appModule
 import com.geekbrains.githubclient.utils.ViewModelStore
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.GlobalContext.startKoin
 
 class App : Application() {
-    val gitProjectsRepo: ProjectsRepo by lazy { ProjectsRepoImpl() }
     val viewModelStore by lazy { ViewModelStore() }
+
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            androidLogger()
+            androidContext(this@App)
+            modules(appModule)
+        }
+    }
+
 }
 
-// способ получить Application, нужное поле, нужного типа
+
 val Context.app: App
     get() = applicationContext as App
 
