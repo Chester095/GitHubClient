@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:id="@+id/main_container_item_git_project">
 
     <TextView
         android:id="@+id/item_git_repo_id"
