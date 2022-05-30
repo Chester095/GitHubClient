@@ -28,10 +28,4 @@ class ReposViewModel(override val id: String) : ViewModel(), LoginContracts.View
                 }
         )
     }
-
-    override fun getProjects(name: String) {
-        liveDataToObserve.value = AppState.Loading
-//        val project = repo.getPojectsUsersFromLocalStorage(name)
-//        liveDataToObserve.postValue(AppState.Success(project))
-    }
 }

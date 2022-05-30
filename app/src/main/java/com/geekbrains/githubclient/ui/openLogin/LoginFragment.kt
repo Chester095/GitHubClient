@@ -11,6 +11,7 @@ import com.geekbrains.githubclient.app
 import com.geekbrains.githubclient.databinding.FragmentOpenLoginBinding
 import com.geekbrains.githubclient.domain.GitProjectEntity
 import com.geekbrains.githubclient.domain.Login
+import com.geekbrains.githubclient.domain.ProjectsRepo
 import com.geekbrains.githubclient.utils.AppState
 import java.util.*
 
@@ -53,15 +54,16 @@ class LoginFragment : Fragment() {
             app.viewModelStore.saveViewModel(viewModel)
         }
 
+        // Подписались на изменения liveData
+        viewModel.getData().observe(viewLifecycleOwner) { state ->
+            render(state)
+        }
+
         // Запросили новые данные
         contactLogin?.let {
             binding.headerLoginTextView.text = it.login
             viewModel.getProjectsRetrofit(it.login) }
 
-        // Подписались на изменения liveData
-        viewModel.getData().observe(viewLifecycleOwner) { state ->
-            render(state)
-        }
 
 
     }
