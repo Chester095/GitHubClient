@@ -26,15 +26,5 @@ class LoginsRecyclingAdapter(
 
     override fun getItemCount(): Int = login.size
 
-/*    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val itemBinding = LayoutInflater.from(parent.context).inflate(R.layout.item_login, parent, false)
-        return LoginViewHolder(itemBinding)
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is LoginViewHolder) {
-            mainPresenter.onBindItemView(holder, position)
-        }
-    }*/
 
 }

@@ -3,7 +3,6 @@ package com.geekbrains.githubclient.ui.openLogin
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.geekbrains.githubclient.App
 import com.geekbrains.githubclient.domain.ProjectsRepo
 import com.geekbrains.githubclient.utils.AppState
 import com.geekbrains.githubclient.utils.BaseViewModel

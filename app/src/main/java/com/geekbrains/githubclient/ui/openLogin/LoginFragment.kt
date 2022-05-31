@@ -1,7 +1,6 @@
 package com.geekbrains.githubclient.ui.openLogin
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -65,21 +64,26 @@ class LoginFragment : Fragment() {
         contactLogin?.let {
             binding.headerLoginTextView.text = it.login
             viewModel.getProjectsRetrofit(it.login) }
-
-
-
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(keyViewModelId, viewModel.id)
+    }
+
+
     private fun render(state: AppState) {
         when (state) {
             is AppState.Success<*> -> {
+                Log.d("!!!","Projects  -  AppState.Success")
                 val project: List<GitProjectEntity> = state.data as List<GitProjectEntity>
                 adapter.setData(project)
             }
             is AppState.Error -> {
-                Log.d("!!!","AppState.Error")
+                Log.d("!!!","Projects  -  AppState.Error")
             }
             is AppState.Loading -> {
-                Log.d("!!!","AppState.Loading")
+                Log.d("!!!","Projects  -  AppState.Loading")
             }
         }
 

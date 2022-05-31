@@ -11,8 +11,8 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 val appModule = module{
-    single<String>(named("api_github")) {"https://api.github.com/"}
-    single<ProjectsRepo> {ProjectsRepoImpl(get<GitHubApi>())}
+    single(named("api_github")) {"https://api.github.com/"}
+    single<ProjectsRepo> {ProjectsRepoImpl(get())}
     single<GitHubApi> {get<Retrofit>().create(GitHubApi::class.java)  }
     single<Retrofit> {
         Retrofit.Builder()
