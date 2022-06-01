@@ -12,8 +12,8 @@ import com.geekbrains.githubclient.databinding.FragmentListLoginsBinding
 import com.geekbrains.githubclient.domain.Login
 import com.geekbrains.githubclient.domain.ProjectsRepo
 import com.geekbrains.githubclient.utils.AppState
-import org.koin.android.ext.android.inject
 import java.util.*
+import javax.inject.Inject
 
 
 class LoginsFragment : Fragment() {
@@ -27,7 +27,8 @@ class LoginsFragment : Fragment() {
         controller.openScreen(login)
     }
 
-    private val repo: ProjectsRepo by inject()
+    @Inject
+    lateinit var repo: ProjectsRepo
 
     interface Controller {
         fun openScreen(login: Login)
@@ -55,6 +56,7 @@ class LoginsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        app.appDependenciesComponent.injectLogins(this)
         binding.loginRecyclerView.adapter = adapter
 
         if (savedInstanceState != null) {

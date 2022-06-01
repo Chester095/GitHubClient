@@ -12,8 +12,8 @@ import com.geekbrains.githubclient.domain.GitProjectEntity
 import com.geekbrains.githubclient.domain.Login
 import com.geekbrains.githubclient.domain.ProjectsRepo
 import com.geekbrains.githubclient.utils.AppState
-import org.koin.android.ext.android.inject
 import java.util.*
+import javax.inject.Inject
 
 class LoginFragment : Fragment() {
 
@@ -30,7 +30,9 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
     private val adapter = ProjectsRecyclingAdapter()
     private lateinit var viewModel: ReposViewModel
-    private val repo: ProjectsRepo by inject()
+
+    @Inject
+    lateinit var repo: ProjectsRepo
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +47,8 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val contactLogin = arguments?.getParcelable<Login>("LOGIN")
         binding.gitProjectsRecyclerView.adapter = adapter
+
+        app.appDependenciesComponent.injectLogin(this)
 
         if (savedInstanceState != null) {
             val viewModelId = savedInstanceState.getString(keyViewModelId)!!
