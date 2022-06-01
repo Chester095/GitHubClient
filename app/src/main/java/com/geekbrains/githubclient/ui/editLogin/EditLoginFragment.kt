@@ -1,21 +1,21 @@
-package com.geekbrains.githubclient.ui.editlogin
+package com.geekbrains.githubclient.ui.editLogin
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.geekbrains.githubclient.R
-import com.geekbrains.githubclient.databinding.ActivityEditLoginBinding
-import com.geekbrains.githubclient.domain.Contact
+import com.geekbrains.githubclient.databinding.FragmentEditLoginBinding
+import com.geekbrains.githubclient.domain.Login
 
 
-class EditLoginActivity() : AppCompatActivity(), EditLoginContract.View {
-    private lateinit var binding: ActivityEditLoginBinding
+class EditLoginFragment() : AppCompatActivity(), EditLoginContract.View {
+    private lateinit var binding: FragmentEditLoginBinding
     lateinit var presenter: EditLoginContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.MyThemeGreen)
-        binding = ActivityEditLoginBinding.inflate(layoutInflater)
+        binding = FragmentEditLoginBinding.inflate(layoutInflater)
         presenter = EditLoginPresenter(this, applicationContext)
         setContentView(binding.root)
 
@@ -40,11 +40,11 @@ class EditLoginActivity() : AppCompatActivity(), EditLoginContract.View {
     }
 
     override fun setSuccess(contactId: Int) {
-        val contactIn = Contact(
+        val loginIn = Login(
             contactId,
             binding.loginEditText.text.toString()
         )
-        presenter.updateContact(contactIn)
+        presenter.updateContact(loginIn)
         onBackPressed()
     }
 

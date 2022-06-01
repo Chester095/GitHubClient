@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/MyThemeGreen">
+    android:theme="@style/MyThemeGreen"
+    tools:context=".ui.addLogin.AddLoginFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/header_insert_login_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/header_insert_login_text_view_margin_top"
-        android:text="@string/edit_login"
+        android:text="@string/insert_login"
         android:textSize="@dimen/login_text_view_text_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +58,7 @@
                 android:layout_height="@dimen/login_button_height"
                 android:layout_marginTop="@dimen/login_button_margin_top"
                 android:elevation="@dimen/login_button_elevation"
-                android:text="@string/save_account_button_text"
+                android:text="@string/add_account_button_text"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
